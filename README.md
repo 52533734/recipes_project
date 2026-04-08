@@ -61,6 +61,25 @@ Bash
 - Bash
     python manage.py test recipes
 - Includes 15 automated tests covering registration, login, recipe list/detail, search/filter, wishlist, and edge cases.
+## Deployment
+
+This project is deployed on [PythonAnywhere](https://umamabegum.pythonanywhere.com/).
+
+### Steps for deployment:
+1. Clone the repository:  
+   `git clone https://github.com/52533734/recipes_project.git`
+2. Create and activate a virtual environment:  
+   `python -m venv venv`  
+   `source venv/bin/activate`  (Linux/Mac)  
+   `venv\Scripts\activate`  (Windows)
+3. Install dependencies:  
+   `pip install -r requirements.txt`
+4. Apply migrations:  
+   `python manage.py migrate`
+5. Collect static files:  
+   `python manage.py collectstatic`
+6. Configure WSGI file and Python version on PythonAnywhere.
+7. Reload web app.
 
 ## Notes
 - All pages include basic validation and error handling.
