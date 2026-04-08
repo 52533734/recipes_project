@@ -30,7 +30,7 @@ The application is database-driven and includes a fully functional front-end wit
 
 1. **Clone the Repository**
 Bash
-    git clone <repository-url>
+    git clone https://github.com/52533734/recipes_project.git
     cd recipes_project
 
 2. **Create and Activate a Virtual Environment**
