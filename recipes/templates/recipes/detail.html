@@ -1,0 +1,33 @@
+{% extends 'recipes/base.html' %}
+
+{% block content %}
+
+<div class="detail-card">
+
+    <h1>{{ recipe.name }}</h1>
+    <p><strong>Published:</strong> {{ recipe.created_at|date:"M d, Y" }}</p>
+    <p><strong>Cuisine:</strong> {{ recipe.cuisine }}</p>
+
+    <p>{{ recipe.description }}</p>
+
+    <h3 class="section-title">Ingredients</h3>
+    <ul class="ingredients">
+        {% for ingredient in recipe.ingredients.all %}
+            <li>{{ ingredient.name }}</li>
+        {% endfor %}
+    </ul>
+
+    <h3 class="section-title">Instructions</h3>
+    <div class="steps">
+         {{ recipe.instructions|linebreaksbr }}
+    </div>
+
+    <br>
+
+    <a href="{% url 'add_to_wishlist' recipe.id %}" class="btn-primary">
+        Add to Wishlist
+    </a>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends 'recipes/base.html' %}
+
+{% block content %}
+
+<h1>Recipes</h1>
+
+<!-- SEARCH BAR -->
+<form method="get" class="search-bar info-form">
+
+    <!-- Search input -->
+    <input 
+        type="text" 
+        name="q" 
+        placeholder="Search..." 
+        value="{{ query|default:'' }}"
+        class="search-input"
+    >
+
+    <!-- Cuisine filter -->
+    <select name="cuisine" class="cuisine-select">
+        <option value="">All Cuisines</option>
+        {% for cuisine in cuisines %}
+            <option value="{{ cuisine }}" {% if cuisine == selected_cuisine %}selected{% endif %}>
+                {{ cuisine }}
+            </option>
+        {% endfor %}
+    </select>
+
+    <!-- Search button -->
+    <button type="submit" class="btn-primary">
+        Search
+    </button>
+
+</form>
+
+
+<!-- RECIPES TABLE -->
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Published</th>
+        <th>Cuisine</th>
+        <th>Action</th>
+    </tr>
+
+    {% for recipe in recipes %}
+    <tr>
+        <td>{{ recipe.name }}</td>
+        <td>{{ recipe.created_at|date:"M d, Y" }}</td>
+        <td>{{ recipe.cuisine }}</td>
+        <td>
+            <a href="{% url 'recipe_detail' recipe.id %}" class="btn-view">
+                View
+            </a>
+        </td>
+    </tr>
+
+    {% empty %}
+    <tr>
+        <td colspan="4">No recipes found.</td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+{% endblock %}

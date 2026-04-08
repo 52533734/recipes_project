@@ -1,0 +1,31 @@
+{% extends 'recipes/base.html' %}
+
+{% block content %}
+
+<div class="form-container info-form">
+    <h1>Login</h1>
+
+    {% if form.errors %}
+        <div class="message error">
+            Invalid username or password
+        </div>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label>Username</label>
+            {{ form.username }}
+        </div>
+
+        <div class="form-group">
+            <label>Password</label>
+            {{ form.password }}
+        </div>
+
+        <button type="submit" class="btn-primary">Login</button>
+    </form>
+</div>
+
+{% endblock %}
